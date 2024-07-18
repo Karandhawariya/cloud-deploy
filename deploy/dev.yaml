@@ -6,4 +6,4 @@ metadata:
   labels: {}
 description: dev
 gke:
-  cluster: projects/peak-axiom-426310-b1/locations/us-central1-a/clusters/application1
+  cluster: projects/peak-axiom-426310-b1/locations/us-central1-a/clusters/cluster1
