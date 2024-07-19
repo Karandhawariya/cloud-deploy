@@ -1,24 +1,24 @@
 steps:
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/quickstart-image', './app1' ]
-  id: 'Build Docker Image'
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/dockerimage1', './app1' ]
+  id: 'Build Docker Image1'
 
   # images:
-  # - 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/quickstart-image'
+  # - 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/dockerimage1'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/quickstart-image' ]
-  id: 'Push Docker Image'
+  args: ['push', 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/dockerimage1' ]
+  id: 'Push Docker Image1'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/flask-image', './app2' ]
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/dockerimage2', './app2' ]
   id: 'Build Docker Image2'
 
   # images:
-  # - 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/quickstart-image'
+  # - 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/dockerimage1'
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/flask-image' ]
+  args: ['push', 'us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/dockerimage2' ]
   id: 'Push Docker Image2'
 
 
@@ -31,8 +31,8 @@ steps:
     gcloud deploy apply --file deploy/pipeline.yaml --region=us-central1
     gcloud deploy apply --file deploy/dev.yaml --region=us-central1
     gcloud deploy apply --file deploy/prod.yaml --region=us-central1
-    gcloud deploy releases create 'app1-release-${SHORT_SHA}' --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --skaffold-file=skaffold.yaml
-    gcloud deploy releases create 'app2-release-${SHORT_SHA}' --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --skaffold-file=skaffold.yaml
+    gcloud deploy releases create 'app-release-${SHORT_SHA}' --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --skaffold-file=skaffold.yaml
+    #gcloud deploy releases create 'app2-release-${SHORT_SHA}' --delivery-pipeline=gke-cicd-pipeline --region=us-central1 --skaffold-file=skaffold.yaml
 
 
 options:

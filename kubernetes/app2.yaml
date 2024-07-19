@@ -14,9 +14,9 @@ spec:
     spec:
       containers:
         - name: flask-container
-          image: us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/flask-image
+          image: us-central1-docker.pkg.dev/peak-axiom-426310-b1/gke-repo/dockerimage2
           ports:
-            - containerPort: 8081
+            - containerPort: 3332
 
 ---
 
@@ -29,6 +29,6 @@ spec:
     app: flask-app
   ports:
     - protocol: TCP
-      port: 8081
-      targetPort: 8081
+      port: 3332
+      targetPort: 3332
   type: LoadBalancer
