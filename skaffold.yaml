@@ -1,13 +1,13 @@
-apiVersion: skaffold/v4beta9
+apiVersion: skaffold/v3alpha1
 kind: Config
-build:
-  tagPolicy:
-    gitCommit: {}
-  local: {}
-manifests:
-  rawYaml:
-    - ./kubernetes/*
-deploy:
+deploy:  
   kubectl: {}
-  logs:
-    prefix: container
+profiles:
+- name: dev
+  manifests:
+    rawYaml:
+    - k8s-dev.yaml
+- name: prod
+  manifests:
+    rawYaml:
+    - k8s-prod.yaml
