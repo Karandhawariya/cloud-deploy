@@ -1,6 +1,6 @@
 apiVersion: skaffold/v3alpha1
 kind: Config
-deploy:
+deploy:  
   kubectl: {}
 profiles:
 - name: dev
